@@ -1,0 +1,15 @@
+#!/bin/bash
+if [ $(id -u) != "0" ]; then
+    echo "This install script must be run as root" 1>&2
+    exit 1
+fi
+
+
+mkdir -p /usr/share/playing
+rm -rf /usr/share/playing/*
+
+cp spgit /usr/share/playing/
+cp mac* /usr/share/playing/
+ln -sf /usr/share/playing/playing /usr/bin
+
+echo INSTALLED!
