@@ -57,9 +57,6 @@ do
       destNum=-1
     fi
 done
-if [[ $temp == 'No Track Playing' ]]; then
-	temp='No Track Playing! Commit Aborted!'
-fi
 
 fi # End Linux Side of script
 
@@ -75,7 +72,7 @@ set output to ("♫ " & t_name & " - " & t_artist & " ♫% " & t_url)
 do shell script "echo " & quoted form of output 
 '
 if [[ "$temp" == "♫  -  ♫% " ]]; then
-	temp='No Track Playing! Commit Aborted!'
+	temp='No Track Playing!'
 fi
 temp=`echo $temp | tr '%' '\n'`
 fi # End OS X Side
@@ -87,12 +84,7 @@ else
 	temp="$temp 
 $1"
 fi
-
-if [[ "$temp" == 'No Track Playing! Commit Aborted!' ]]; then
-	$temp
-else
-	echo "$temp"
-fi
+echo "$temp"
 
 
 
